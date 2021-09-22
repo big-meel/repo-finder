@@ -7,13 +7,18 @@
   <% end %>
 </div>
 
-<div>
+<div id="repositories">
   <% if @payload %>
 
     <p> <%= "#{@payload["total_count"]} items match your search" %> </p>
 
-    <% @payload["items"].each do |load| %>
-      <%= load["name"] %>
+    <% @payload["items"].each do |repo| %>
+      <article>
+        <%= link_to repo["html_url"] do %>
+          <%= repo["full_name"] %>
+        <% end %>
+      </article>
+      <br>
     <% end %>
 
   <% end %>
