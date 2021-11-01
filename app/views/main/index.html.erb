@@ -8,11 +8,11 @@
 </div>
 
 <div id="repositories">
-  <% if @payload %>
+  <% if @repos %>
 
-    <p> <%= "#{@payload["total_count"]} items match your search" %> </p>
+    <p> <%= "#{@repos["total_count"]} items match your search" %> </p>
 
-    <% @payload["items"].each do |repo| %>
+    <% @repos["items"].each do |repo| %>
       <article>
         <%= link_to repo["html_url"] do %>
           <%= repo["full_name"] %>

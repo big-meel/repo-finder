@@ -1,7 +1,13 @@
 class MainController < ApplicationController
 
   def index
-    @payload = Repo.search_repos(params[:search])
+    @repos = RepoList.new(search).list_repos
+  end
+
+  private
+
+  def search
+    params[:search]
   end
   
 end
