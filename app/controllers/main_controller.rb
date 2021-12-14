@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
   def index
-    @repos = RepoList.new(search).list_repos
+    @repos = Repos::RepoFinder.call(search)
   end
 
   private
