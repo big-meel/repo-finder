@@ -1,4 +1,5 @@
 class RepoList
+  include GithubRepos
 
   def initialize(search)
     @list = GithubRepos::RepoFinder.call(search)

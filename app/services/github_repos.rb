@@ -1,4 +1,4 @@
-class GithubRepos
+module GithubRepos
   
   URL     = "https://api.github.com/search/repositories"
   HEADERS = { 
