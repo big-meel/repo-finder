@@ -17,17 +17,30 @@ class GithubRepos
     end
     
     def get_repos
-      payload = 
-      HTTParty.get(
-        URL,
-        headers: HEADERS,
-        query: {q: @search}
-      ).to_s
+      begin 
+        payload = 
+        HTTParty.get(
+          URL,
+          headers: HEADERS,
+          query: {q: @search}
+        ).to_s
+      rescue => e
+        # Log error
+        response = nil
+      else
+        response = check_response( JSON.parse(payload) )
+      end
 
-      # TODO: Add error handling for bad requests and status codes (!= 200)
-      JSON.parse(payload)
+      return response
     end
 
+    private
+
+    def check_response(response)
+      return nil if response["message"]
+      
+      response
+    end
   end
 
 
