@@ -1,4 +1,4 @@
-class Repos
+class GithubRepos
   
   URL     = "https://api.github.com/search/repositories"
   HEADERS = { 
@@ -8,20 +8,20 @@ class Repos
 
   class RepoFinder
 
-    def initialize(search:)
+    def initialize(search)
       @search = search
     end
     
-    def self.call(*args)
-      new(*args).sanitize
+    def self.call(search)
+      new(search).get_repos
     end
     
-    def get_repos(keyword)
+    def get_repos
       payload = 
       HTTParty.get(
         URL,
         headers: HEADERS,
-        query: {q: keyword}
+        query: {q: @search}
       ).to_s
 
       # TODO: Add error handling for bad requests and status codes (!= 200)
