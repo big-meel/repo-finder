@@ -5,7 +5,7 @@ class RepoList
     @list = GithubRepos::RepoFinder.call(search)
   end
 
-  def self.all(search = "")
+  def self.search(search = "")
     new(search).list
   end
 

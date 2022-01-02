@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
   def index
-    @repos = RepoList.all(search) 
+    @repos = RepoList.search(search) 
   end
 
   private

@@ -26,7 +26,7 @@ module GithubRepos
         ).to_s
       rescue => e
         # Log error
-        response = nil
+        response = []
       else
         response = check_response( JSON.parse(payload) )
       end
@@ -37,7 +37,7 @@ module GithubRepos
     private
 
     def check_response(response)
-      return nil if response["message"]
+      return [] if response["message"]
       
       response
     end
